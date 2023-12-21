@@ -4,7 +4,7 @@
 Feature: Login to Square Application
 
   Background:
-    Given User is on SquareLogin page "https://square-web-v2.vercel.app/"
+    Given User is on SquareLogin page "http://192.168.1.192:3000"
 
   @ValidCredentials
   Scenario: Login with valid credentials
