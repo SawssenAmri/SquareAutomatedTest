@@ -1,19 +1,28 @@
 package actions;
 
-import locators.HomePageLocators;
+import locators.HomePL;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import utils.HelperClass;
 
 public class HomePageActions {
-    HomePageLocators homePageLocators ;
-            //= null;
+    HomePL homePageLocators;
+    FluentWait<WebDriver> fluentWait = HelperClass.initializeFluentWait(HelperClass.getChromeDriver());
 
-    public HomePageActions(){
-        this.homePageLocators=new HomePageLocators();
-        PageFactory.initElements(HelperClass.getDriver(),homePageLocators);
+    public HomePageActions() {
+        this.homePageLocators = new HomePL();
+        PageFactory.initElements(HelperClass.getChromeDriver(), homePageLocators);
     }
 
-    public String getDashboardText(){
+    public String getDashboardText() {
         return homePageLocators.dashboardText.getText();
+    }
+
+    public void getCompaniesInterface(WebDriver driver) {
+        fluentWait.until(ExpectedConditions.visibilityOf(homePageLocators.CompanyButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", homePageLocators.CompanyButton);
     }
 }

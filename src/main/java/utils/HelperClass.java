@@ -1,8 +1,10 @@
 package utils;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
@@ -21,8 +23,7 @@ public class HelperClass {
     public static void openPage(String url) {
         driver.get(url);
     }
-
-    public static WebDriver getDriver() {
+    public static WebDriver getChromeDriver() {
         return driver;
     }
 
@@ -34,6 +35,7 @@ public class HelperClass {
         }
     }
 
+
     public static void tearDown() {
 
         if (driver != null) {
@@ -43,5 +45,12 @@ public class HelperClass {
 
         helperClass = null;
     }
+
+    public static FluentWait<WebDriver> initializeFluentWait(WebDriver driver) {
+        return new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30)) // Maximum time to wait
+                .pollingEvery(Duration.ofSeconds(5)); // Check for the condition every 5 seconds
+    }
+
 
 }

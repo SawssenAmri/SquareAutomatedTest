@@ -1,18 +1,18 @@
 package actions;
 
-import locators.LoginPageLocators;
+import locators.LoginPL;
 import org.openqa.selenium.support.PageFactory;
 import utils.HelperClass;
 
 public class LoginPageActions {
-    LoginPageLocators loginPageLocators ;
+    LoginPL loginPageLocators ;
             //=null;
 
     public LoginPageActions() {
 
-        this.loginPageLocators = new LoginPageLocators();
+        this.loginPageLocators = new LoginPL();
 
-        PageFactory.initElements(HelperClass.getDriver(), loginPageLocators);
+        PageFactory.initElements(HelperClass.getChromeDriver(), loginPageLocators);
     }
 
     // Get the Error Message

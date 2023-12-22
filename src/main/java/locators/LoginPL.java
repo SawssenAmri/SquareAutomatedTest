@@ -3,7 +3,7 @@ package locators;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPageLocators {
+public class LoginPL {
 
     @FindBy(id = "sign-in-email-input")
     public WebElement emailBox;

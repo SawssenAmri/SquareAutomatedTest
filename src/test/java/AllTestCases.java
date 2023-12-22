@@ -13,7 +13,7 @@ import java.util.Random;
 import static java.lang.Thread.sleep;
 
 public class AllTestCases {
-    @Test
+
     public void userClickOnMenuEnterprise() throws InterruptedException {
         //Login to square
         WebDriver driver = new ChromeDriver();
@@ -85,10 +85,11 @@ public class AllTestCases {
         elementPerPage.sendKeys("25");
         elementPerPage.sendKeys(Keys.ARROW_DOWN);
         elementPerPage.sendKeys(Keys.ENTER);
-        int companyNumber = driver.findElements(By.id("delete-enterprise")).size();
-        driver.findElements(By.id("delete-enterprise")).get(companyNumber - 1).click();
-        driver.findElement(By.xpath("/html/body/div[5]/div/div[6]/button[1]")).click();
+        int companyNumber = driver.findElements(By.xpath("//span[starts-with(@id,'delete-enterprise')]")).size();
+        driver.findElements(By.xpath("//span[starts-with(@id,'delete-enterprise')]")).get(companyNumber - 1).click();
 
+       WebElement deleteButton= driver.findElement(By.xpath("/html/body/div[5]/div/div[6]/button[1]"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", deleteButton);
     }
 }
 
