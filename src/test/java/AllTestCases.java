@@ -13,7 +13,7 @@ import java.util.Random;
 import static java.lang.Thread.sleep;
 
 public class AllTestCases {
-
+    @Test
     public void userClickOnMenuEnterprise() throws InterruptedException {
         //Login to square
         WebDriver driver = new ChromeDriver();
@@ -23,17 +23,32 @@ public class AllTestCases {
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
+
         driver.get("http://192.168.1.192:3000/");
-        driver.findElement(By.id("sign-in-email-input")).sendKeys("hamza.ramy.ing@gmail.com");
+        driver.findElement(By.id("sign-in-email-input")).sendKeys("test3@gmail.com");
         driver.findElement(By.id("sign-in-password-input")).sendKeys("Aziz@123");
         driver.findElement(By.id("sign-in-button")).click();
-        fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//span[text()=' Entreprises']")));
 
-        //sleep(5000);
+        //fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//span[text()=' Entreprises']")));
+        fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("(//div)[30]")));
+        WebElement users_button = driver.findElement(By.xpath("(//div)[30]"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", users_button);
+
+       /* WebElement collaborator_button = driver
+                .findElement(By.xpath("//*[@id=\"root\"]/div[1]/div/ul/a[7]/div/div/div/ul[1]/a/li/div/div/span"));
+        collaborator_button.click();*/
+        fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//span[text()='more_vert']")));
+        driver.findElement(By.xpath("//span[text()='more_vert']")).click();
+        fluentWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("/html/body/div[5]/div[3]/ul/li[2]")));
+
+        driver.findElement(By.xpath("/html/body/div[5]/div[3]/ul/li[2]")).click();
+
+
+       /* //sleep(5000);
         //access to Enterprise interface
         WebElement entreprise = driver.findElement(By.xpath("//span[text()=' Entreprises']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", entreprise);
-        driver.findElement(By.id("add-enterprise")).click();
+        driver.findElement(By.xpath("//button[text()='+Ajouter entreprise']")).click();
 
         //First step
         driver.findElement(By.id("name-enterprise")).sendKeys("Enterprise " + new Random().nextInt(100));
@@ -53,10 +68,10 @@ public class AllTestCases {
         driver.findElement(By.id("post-code-enterprise")).sendKeys("0000");
         WebElement submitButton = driver.findElement(By.xpath("//*[@id=\"send\"]"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submitButton);
-        sleep(3000);
+        sleep(3000);*/
 
         //Second step
-        driver.findElement(By.name("facilityName")).sendKeys("Establishment" + new Random().nextInt(100));
+       /* driver.findElement(By.name("facilityName")).sendKeys("Establishment" + new Random().nextInt(100));
         driver.findElement(By.id("facility-serial-number")).sendKeys("ETBLMS" + new Random().nextInt(1000));
         WebElement establishmentType = driver.findElement(By.id("size-small-standard-0"));
         establishmentType.sendKeys("crèche");
@@ -89,7 +104,7 @@ public class AllTestCases {
         driver.findElements(By.xpath("//span[starts-with(@id,'delete-enterprise')]")).get(companyNumber - 1).click();
 
        WebElement deleteButton= driver.findElement(By.xpath("/html/body/div[5]/div/div[6]/button[1]"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", deleteButton);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", deleteButton);*/
     }
 }
 

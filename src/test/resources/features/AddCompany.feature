@@ -14,11 +14,11 @@ Feature: Add company as super admin
     Then the "<field>" validation should be "<error message>"
     Examples:
       | field                   | value  | error message                                      |
-            #test the company's name field
+        #test the company's name field
       | company_name            |        | Nom est obligatoire                                |
       | company_name            | a      | La longueur minimale requise est de 2 caractères.  |
 
-            #test the company's serial number field
+        #test the company's serial number field
       | company_serial_number   |        | Matricule fiscal est obligatoire                   |
       | company_serial_number   | 1      | La longueur minimale requise est de 8 caractères.  |
 
@@ -45,3 +45,4 @@ Feature: Add company as super admin
       | company_postcode        |        | Code postal est obligatoire                        |
       | company_postcode        | a      | La valeur doit etre un nombre                      |
       | company_postcode        | 12     | La longueur minimale requise est de 4 caractères.  |
+

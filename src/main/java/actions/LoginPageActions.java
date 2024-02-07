@@ -1,5 +1,6 @@
 package actions;
 
+import io.cucumber.datatable.DataTable;
 import locators.LoginPL;
 import org.openqa.selenium.support.PageFactory;
 import utils.HelperClass;
@@ -20,7 +21,18 @@ public class LoginPageActions {
         return loginPageLocators.errorMessage.getText();
     }
 
-    public void login(String email, String password) {
+    public void login(DataTable dataValue) {
+
+        // Fill email
+        loginPageLocators.emailBox.sendKeys(dataValue.cell(0,0));
+
+        // Fill password
+        loginPageLocators.passwordBox.sendKeys(dataValue.cell(0,1));
+
+        // Click Login button
+        loginPageLocators.loginButton.click();
+    }
+    public void loginWithString(String email, String password) {
 
         // Fill email
         loginPageLocators.emailBox.sendKeys(email);

@@ -9,7 +9,8 @@ Feature: Login to Square Application
   @ValidCredentials
   Scenario: Login with valid credentials
 
-    When User enters email as "hamza.ramy.ing@gmail.com" and password as "Aziz@123"
+    When User enters email and password
+    |hamza.ramy.ing@gmail.com|Aziz@123|
     Then User should be able to login successfully and new page open
 
   @InvalidCredentials
@@ -17,6 +18,7 @@ Feature: Login to Square Application
 
     When User enters email as "<email>" and password as "<password>"
     Then User should be able to see error message "<errorMessage>"
+
 
     Examples:
       | email                    | password  | errorMessage                                |

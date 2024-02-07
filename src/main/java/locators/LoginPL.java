@@ -13,6 +13,6 @@ public class LoginPL {
     @FindBy(id = "sign-in-button")
     public WebElement loginButton;
 
-    @FindBy(xpath = "//*[@id=\"error-alert\"]/div")
+    @FindBy(id = "error-alert")
     public WebElement errorMessage;
 }

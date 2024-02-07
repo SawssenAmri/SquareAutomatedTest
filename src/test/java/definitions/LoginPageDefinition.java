@@ -2,6 +2,7 @@ package definitions;
 
 import actions.HomePageActions;
 import actions.LoginPageActions;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
 import utils.HelperClass;
@@ -17,11 +18,11 @@ public class LoginPageDefinition {
 
     }
 
-    @When("User enters email as {string} and password as {string}")
-    public void goToHomePage(String email, String password) {
+    @When("User enters email and password")
+    public void goToHomePage(DataTable dtValue) {
 
         // login to application
-        objLogin.login(email, password);
+        objLogin.login(dtValue);
     }
 
     @Then("User should be able to login successfully and new page open")
@@ -40,4 +41,8 @@ public class LoginPageDefinition {
 
     }
 
+    @When("User enters email as {string} and password as {string}")
+    public void userEntersEmailAsAndPasswordAs(String email, String password) {
+        objLogin.loginWithString(email, password);
+    }
 }
